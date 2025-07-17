@@ -192,4 +192,22 @@ function createGameController() {
 
 function createDisplayController() {
     const game = createGameController();
+
+    const boardDisplay = document.querySelector(".board");
+
+    function updateScreen() {
+        const board = game.getBoard();
+
+        for (let row of board) {
+            for (let space of row) {
+                const cell = document.createElement("div");
+                cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
+                boardDisplay.appendChild(cell);
+            }
+        }    
+    }
+
+    updateScreen();
 }
+
+createDisplayController()
