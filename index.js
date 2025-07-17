@@ -30,7 +30,7 @@ function createGameboard() {
     const spaceEmpty = (row, column) => board[row][column] === EMPTY;
     const placeMark = (row, column, mark) => board[row][column] = mark;
 
-    return { board, getBoard, markSpace };
+    return { getBoard, markSpace };
 }
 
 function createGameController() {
