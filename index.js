@@ -58,14 +58,37 @@ function createGameController() {
 
     function playGame() {
         while (gameInProgress()) {
+            startTurn();
             playTurn();
-            updateGameState();
+            endTurn();
         }
 
         announceResults();
     }
 
-    function updateGameState() {
+
+    function startTurn() {
+        console.log(JSON.stringify(board.getBoard()));
+        console.log(`${currentPlayer.name}'s turn!`);
+    }
+
+    function playTurn() { 
+        do {
+            const row = parseInt(prompt("Row: "));
+            const column = parseInt(prompt("Column: "));
+
+            try {
+                board.markSpace(row, column, currentPlayer.mark);
+                break;
+            }
+            catch (error) {
+                console.error(error.message);
+            }
+
+        } while(true);
+    }
+
+    function endTurn() {
         win() || tie() ? endGame() : nextPlayerTurn();
     }
 
@@ -81,25 +104,6 @@ function createGameController() {
     function announceTie() {
         console.log(board.getBoard());
         console.log("Tie!");
-    }
-
-    function playTurn() { 
-        console.log(JSON.stringify(board.getBoard()));
-        console.log(`${currentPlayer.name}'s turn!`);
-
-        do {
-            const row = parseInt(prompt("Row: "));
-            const column = parseInt(prompt("Column: "));
-
-            try {
-                board.markSpace(row, column, currentPlayer.mark);
-                break;
-            }
-            catch (error) {
-                console.error(error.message);
-            }
-
-        } while(true);
     }
 
     function tie() {
