@@ -198,8 +198,13 @@ function createDisplayController() {
     const boardDisplay = document.querySelector(".board");
 
     function updateScreen() {
+        updateTurn();
+        updateBoard();
+    }
+
+    const updateTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
+    const updateBoard = () => {
         const board = game.getBoard();
-        updatePlayerTurn();
 
         for (let row of board) {
             for (let space of row) {
@@ -208,10 +213,8 @@ function createDisplayController() {
                 cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
                 boardDisplay.appendChild(cell);
             }
-        }    
+        } 
     }
-
-    const updatePlayerTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
 
     updateScreen();
 }
