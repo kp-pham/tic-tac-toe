@@ -124,12 +124,5 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    playTurn(0, 1);
-    playTurn(0, 2);
-    playTurn(0, 0);
-    playTurn(2, 0);
-    playTurn(2, 2);
-    playTurn(1, 1);
-    console.log(board.getBoard());
-    console.log(winCondition());
+    return { playTurn };
 }
