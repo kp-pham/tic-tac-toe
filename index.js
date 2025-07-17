@@ -203,18 +203,24 @@ function createDisplayController() {
     }
 
     const updateTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
-    const updateBoard = () => {
+
+    function updateBoard() {
         const board = game.getBoard();
 
         for (let row of board) {
             for (let space of row) {
-                const cell = document.createElement("button");
-                cell.classList.add("cell");
-                cell.textContent = space;
-                boardDisplay.appendChild(cell);
+                createCell(space);
             }
         } 
     }
+
+    function createCell(space) {
+        const cell = document.createElement("button");
+        cell.classList.add("cell");
+        cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
+        boardDisplay.appendChild(cell);
+    }
+
 
     updateScreen();
 }
