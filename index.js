@@ -57,6 +57,10 @@ function createGameController() {
         nextPlayerTurn();
     }
 
+    function winCondition() {
+        return horizontal() || vertical() || diagonal();
+    }
+
     function horizontal() {
         for (let row of board.getBoard())
             if (threeInARow(row, PLAYER_ONE_MARK) || threeInARow(row, PLAYER_TWO_MARK))
@@ -120,11 +124,12 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    playTurn(1, 1);
-    playTurn(0, 0);
     playTurn(0, 1);
+    playTurn(0, 2);
+    playTurn(0, 0);
     playTurn(2, 0);
-    playTurn(2, 1);
+    playTurn(2, 2);
+    playTurn(1, 1);
     console.log(board.getBoard());
-    console.log(vertical());
+    console.log(winCondition());
 }
