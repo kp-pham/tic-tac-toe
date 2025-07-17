@@ -15,7 +15,7 @@ function createGameboard() {
 
     const getBoard = () => board;
 
-    const markSpace = function (row, column, mark) {
+    function markSpace(row, column, mark) {
         if (!inBounds(row, column))
             throw new Error ("Cannot place mark on space out of bounds.");
         else if (!spaceEmpty(row, column))
@@ -45,6 +45,8 @@ function createGameController() {
     let currentPlayer = PLAYER_ONE;
     let running = true;
 
+    const getBoard = () => board.getBoard();
+
     const gameInProgress = () => running;
     const endGame = () => running = false;
 
@@ -65,7 +67,6 @@ function createGameController() {
 
         announceResults();
     }
-
 
     function startTurn() {
         console.log(JSON.stringify(board.getBoard()));
@@ -186,7 +187,7 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playGame };
+    return { playGame, getBoard };
 }
 
 function createDisplayController() {
