@@ -46,6 +46,7 @@ function createGameController() {
     let running = true;
 
     const getBoard = () => board.getBoard();
+    const getCurrentPlayer = () => currentPlayer;
 
     const gameInProgress = () => running;
     const endGame = () => running = false;
@@ -187,7 +188,7 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playGame, getBoard };
+    return { playGame, getBoard, getCurrentPlayer };
 }
 
 function createDisplayController() {
