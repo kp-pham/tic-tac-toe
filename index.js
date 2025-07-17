@@ -11,5 +11,7 @@ function createGameboard() {
         }
     }
 
-    return { board };
+    const getBoard = () => board;
+
+    return { board, getBoard };
 }
