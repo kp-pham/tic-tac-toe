@@ -63,7 +63,7 @@ function createGameController() {
 
     function horizontal() {
         for (let row of board.getBoard())
-            if (threeInARow(row, PLAYER_ONE_MARK) || threeInARow(row, PLAYER_TWO_MARK))
+            if (threeInARow(row, currentPlayer.mark))
                 return true;
         
         return false;
@@ -75,8 +75,7 @@ function createGameController() {
         const gameboard = board.getBoard();
 
         for (let i = 0; i < gameboard.length; ++i)
-            if (threeInAColumn(getColumn(gameboard, i), PLAYER_ONE_MARK) || 
-                threeInAColumn(getColumn(gameboard, i, PLAYER_TWO_MARK)))
+            if (threeInAColumn(getColumn(gameboard, i), currentPlayer.mark))
                 return true;
         
         return false;
@@ -99,8 +98,8 @@ function createGameController() {
         const diagonal = getDiagonal(gameboard);
         const antiDiagonal = getAntiDiagonal(gameboard);
 
-        return threeInADiagonal(diagonal, PLAYER_ONE_MARK) || threeInADiagonal(diagonal, PLAYER_TWO_MARK) ||
-            threeInADiagonal(antiDiagonal, PLAYER_ONE_MARK) || threeInADiagonal(antiDiagonal, PLAYER_TWO_MARK);
+        return threeInADiagonal(diagonal, currentPlayer.mark) ||
+            threeInADiagonal(antiDiagonal, currentPlayer.mark);
     }
 
     function getDiagonal(gameboard) {
