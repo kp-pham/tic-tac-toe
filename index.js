@@ -37,22 +37,36 @@ function createGameController() {
     const PLAYER_ONE_MARK = 'X';
     const PLAYER_TWO_MARK = 'O';
 
-    const PLAYER_ONE = createPlayer(PLAYER_ONE_MARK);
-    const PLAYER_TWO = createPlayer(PLAYER_TWO_MARK);
+    const PLAYER_ONE = createPlayer("Player 1", PLAYER_ONE_MARK);
+    const PLAYER_TWO = createPlayer("Player 2", PLAYER_TWO_MARK);
 
     const board = createGameboard();
 
     let currentPlayer = PLAYER_ONE;
 
-    function createPlayer(mark) {
-        return { mark };
+    function createPlayer(name, mark) {
+        return { name, mark };
     }
 
     function nextPlayerTurn() {
         currentPlayer = (currentPlayer === PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
     }
 
-    function playTurn(row, column) {
+    function playGame() {
+        while (!winCondition())
+            playTurn();
+
+        console.log(board.getBoard());
+        console.log(`${currentPlayer.name} wins!`);
+    }
+
+    function playTurn() { 
+        console.log(JSON.stringify(board.getBoard()));
+        console.log(`${currentPlayer.name}'s turn!`);
+
+        const row = parseInt(prompt("Row: "));
+        const column = parseInt(prompt("Column: "));
+        
         board.markSpace(row, column, currentPlayer.mark);
         nextPlayerTurn();
     }
@@ -123,5 +137,5 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playTurn };
+    return { playGame };
 }
