@@ -67,6 +67,28 @@ function createGameController() {
 
     const threeInARow = (row, mark) => row.every(space => space === mark);
 
+    function vertical() {
+        const gameboard = board.getBoard();
+
+        for (let i = 0; i < gameboard.length; ++i)
+            if (threeInAColumn(getColumn(gameboard, i), PLAYER_ONE_MARK) || 
+                threeInAColumn(getColumn(gameboard, i, PLAYER_TWO_MARK)))
+                return true;
+        
+        return false;
+    }
+
+    function getColumn(gameboard, columnIndex) {
+        const column = [];
+        
+        for (let i = 0; i < gameboard.length; ++i)
+            column.push(gameboard[i][columnIndex]);
+
+        return column;
+    }
+
+    const threeInAColumn = (column, mark) => column.every(space => space === mark);
+
     function diagonal() {
         const gameboard = board.getBoard();
 
@@ -98,12 +120,11 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    playTurn(2, 1);
     playTurn(1, 1);
+    playTurn(0, 0);
     playTurn(0, 1);
     playTurn(2, 0);
-    playTurn(1, 2);
-    playTurn(0, 2);
+    playTurn(2, 1);
     console.log(board.getBoard());
-    console.log(diagonal());
+    console.log(vertical());
 }
