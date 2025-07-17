@@ -52,10 +52,19 @@ function createGameController() {
         currentPlayer = (currentPlayer === PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
     }
 
+    function playTurn(row, column) {
+        board.markSpace(row, column, currentPlayer.mark);
+        nextPlayerTurn();
+    }
+
     console.log(currentPlayer);
-    nextPlayerTurn();
+    playTurn(1, 1);
+    console.log(board.getBoard());
     console.log(currentPlayer);
-    nextPlayerTurn();
+    playTurn(2, 0);
+    console.log(board.getBoard());
     console.log(currentPlayer);
-    
+    playTurn(1, 0);
+    console.log(board.getBoard());
+    console.log(currentPlayer);
 }
