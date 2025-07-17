@@ -34,5 +34,18 @@ function createGameboard() {
 }
 
 function createGameController() {
+    const PLAYER_ONE_MARK = 'X';
+    const PLAYER_TWO_MARK = 'O';
+
+    const PLAYER_ONE = createPlayer(PLAYER_ONE_MARK);
+    const PLAYER_TWO = createPlayer(PLAYER_TWO_MARK);
+
     const board = createGameboard();
+
+    function createPlayer(mark) {
+        return { mark };
+    }
+
+    console.log(PLAYER_ONE);
+    console.log(PLAYER_TWO);
 }
