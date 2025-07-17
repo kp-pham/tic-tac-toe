@@ -65,5 +65,45 @@ function createGameController() {
         return false;
     }
 
-    const threeInARow = (row, mark) => { row.every(space => space === mark) };
+    const threeInARow = (row, mark) => row.every(space => space === mark);
+
+    function diagonal() {
+        const gameboard = board.getBoard();
+
+        const diagonal = getDiagonal(gameboard);
+        const antiDiagonal = getAntiDiagonal(gameboard);
+
+        return threeInADiagonal(diagonal, PLAYER_ONE_MARK) || threeInADiagonal(diagonal, PLAYER_TWO_MARK) ||
+            threeInADiagonal(antiDiagonal, PLAYER_ONE_MARK) || threeInADiagonal(antiDiagonal, PLAYER_TWO_MARK);
+    }
+
+    function getDiagonal(gameboard) {
+        const diagonal = [];
+
+        for (let i = 0; i < gameboard.length; ++i)
+            diagonal.push(gameboard[i][i]);
+
+        return diagonal;
+    }
+
+    function getAntiDiagonal(gameboard) {
+        const N = gameboard.length - 1;
+        const antiDiagonal = [];
+
+        for (let i = N; i >= 0; --i)
+            antiDiagonal.push(gameboard[i][N-i]);
+
+        return antiDiagonal;
+    }
+
+    const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
+
+    playTurn(2, 1);
+    playTurn(1, 1);
+    playTurn(0, 1);
+    playTurn(2, 0);
+    playTurn(1, 2);
+    playTurn(0, 2);
+    console.log(board.getBoard());
+    console.log(diagonal());
 }
