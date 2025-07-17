@@ -56,11 +56,17 @@ function createGameController() {
     function playGame() {
         while (gameInProgress) {
             playTurn();
-            winCondition() ? gameInProgress = false : nextPlayerTurn();
+            win() || tie() ? gameInProgress = false : nextPlayerTurn();
         }
 
-        console.log(board.getBoard());
-        console.log(`${currentPlayer.name} wins!`);
+        if (win()) {
+            console.log(board.getBoard());
+            console.log(`${currentPlayer.name} wins!`);
+        }
+        else {
+            console.log(board.getBoard());
+            console.log("Tie!");
+        }
     }
 
     function playTurn() { 
@@ -73,7 +79,21 @@ function createGameController() {
         board.markSpace(row, column, currentPlayer.mark);
     }
 
-    function winCondition() {
+    function tie() {
+        return !win() && boardFilled();
+    }
+
+    function boardFilled() {
+        for (let row of board.getBoard())
+            if (!rowFilled(row))
+                return false;
+
+        return true;
+    }
+
+    const rowFilled = row => row.every(space => space === PLAYER_ONE_MARK || space === PLAYER_TWO_MARK);
+
+    function win() {
         return horizontal() || vertical() || diagonal();
     }
 
