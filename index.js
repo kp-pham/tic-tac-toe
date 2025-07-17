@@ -188,3 +188,7 @@ function createGameController() {
 
     return { playGame };
 }
+
+function createDisplayController() {
+    const game = createGameController();
+}
