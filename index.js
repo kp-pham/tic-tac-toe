@@ -42,10 +42,20 @@ function createGameController() {
 
     const board = createGameboard();
 
+    let currentPlayer = PLAYER_ONE;
+
     function createPlayer(mark) {
         return { mark };
     }
 
-    console.log(PLAYER_ONE);
-    console.log(PLAYER_TWO);
+    function nextPlayerTurn() {
+        currentPlayer = (currentPlayer === PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
+    }
+
+    console.log(currentPlayer);
+    nextPlayerTurn();
+    console.log(currentPlayer);
+    nextPlayerTurn();
+    console.log(currentPlayer);
+    
 }
