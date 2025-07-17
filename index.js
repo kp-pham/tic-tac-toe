@@ -208,9 +208,9 @@ function createDisplayController() {
 
         for (let row of board) {
             for (let space of row) {
-                const cell = document.createElement("div");
+                const cell = document.createElement("button");
                 cell.classList.add("cell");
-                cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
+                cell.textContent = space;
                 boardDisplay.appendChild(cell);
             }
         } 
