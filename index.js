@@ -57,14 +57,13 @@ function createGameController() {
         nextPlayerTurn();
     }
 
-    console.log(currentPlayer);
-    playTurn(1, 1);
-    console.log(board.getBoard());
-    console.log(currentPlayer);
-    playTurn(2, 0);
-    console.log(board.getBoard());
-    console.log(currentPlayer);
-    playTurn(1, 0);
-    console.log(board.getBoard());
-    console.log(currentPlayer);
+    function horizontal() {
+        for (let row of board.getBoard())
+            if (threeInARow(row, PLAYER_ONE_MARK) || threeInARow(row, PLAYER_TWO_MARK))
+                return true;
+        
+        return false;
+    }
+
+    const threeInARow = (row, mark) => { row.every(space => space === mark) };
 }
