@@ -43,7 +43,10 @@ function createGameController() {
     const board = createGameboard();
 
     let currentPlayer = PLAYER_ONE;
-    let gameInProgress = true;
+    let running = true;
+
+    const gameInProgress = () => running;
+    const endGame = () => running = false;
 
     function createPlayer(name, mark) {
         return { name, mark };
@@ -54,19 +57,30 @@ function createGameController() {
     }
 
     function playGame() {
-        while (gameInProgress) {
+        while (gameInProgress()) {
             playTurn();
-            win() || tie() ? gameInProgress = false : nextPlayerTurn();
+            updateGameState();
         }
 
-        if (win()) {
-            console.log(board.getBoard());
-            console.log(`${currentPlayer.name} wins!`);
-        }
-        else {
-            console.log(board.getBoard());
-            console.log("Tie!");
-        }
+        announceResults();
+    }
+
+    function updateGameState() {
+        win() || tie() ? endGame() : nextPlayerTurn();
+    }
+
+    function announceResults() {
+        win() ? announceWinner() : announceTie();
+    }
+
+    function announceWinner() {
+        console.log(board.getBoard());
+        console.log(`${currentPlayer.name} wins!`);
+    }
+
+    function announceTie() {
+        console.log(board.getBoard());
+        console.log("Tie!");
     }
 
     function playTurn() { 
