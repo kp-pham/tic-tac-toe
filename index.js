@@ -43,6 +43,7 @@ function createGameController() {
     const board = createGameboard();
 
     let currentPlayer = PLAYER_ONE;
+    let gameInProgress = true;
 
     function createPlayer(name, mark) {
         return { name, mark };
@@ -53,8 +54,10 @@ function createGameController() {
     }
 
     function playGame() {
-        while (!winCondition())
+        while (gameInProgress) {
             playTurn();
+            winCondition() ? gameInProgress = false : nextPlayerTurn();
+        }
 
         console.log(board.getBoard());
         console.log(`${currentPlayer.name} wins!`);
@@ -68,7 +71,6 @@ function createGameController() {
         const column = parseInt(prompt("Column: "));
         
         board.markSpace(row, column, currentPlayer.mark);
-        nextPlayerTurn();
     }
 
     function winCondition() {
