@@ -32,3 +32,7 @@ function createGameboard() {
 
     return { board, getBoard, markSpace };
 }
+
+function createGameController() {
+    const board = createGameboard();
+}
