@@ -199,7 +199,7 @@ function createDisplayController() {
 
     function updateScreen() {
         const board = game.getBoard();
-        turnDisplay.textContent = game.getCurrentPlayer().name;
+        updatePlayerTurn();
 
         for (let row of board) {
             for (let space of row) {
@@ -210,6 +210,8 @@ function createDisplayController() {
             }
         }    
     }
+
+    const updatePlayerTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
 
     updateScreen();
 }
