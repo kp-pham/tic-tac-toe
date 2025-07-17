@@ -12,6 +12,9 @@ function createGameboard() {
     }
 
     const getBoard = () => board;
+    const markSpace = (row, column, mark) => {
+        board[row][column] = mark;
+    }
 
-    return { board, getBoard };
+    return { board, getBoard, markSpace };
 }
