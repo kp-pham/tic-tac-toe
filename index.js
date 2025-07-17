@@ -194,10 +194,12 @@ function createGameController() {
 function createDisplayController() {
     const game = createGameController();
 
+    const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
 
     function updateScreen() {
         const board = game.getBoard();
+        turnDisplay.textContent = game.getCurrentPlayer().name;
 
         for (let row of board) {
             for (let space of row) {
