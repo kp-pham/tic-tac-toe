@@ -60,7 +60,7 @@ function createGameController() {
     function playTurn(row, column) { 
         try {
             board.markSpace(row, column, currentPlayer.mark);
-            nextPlayerTurn();          
+            if (!win() && !tie()) nextPlayerTurn();          
         }
         catch(error) {
             console.error(error.message);
@@ -157,6 +157,7 @@ function createGameController() {
 function createDisplayController() {
     const game = createGameController();
 
+    const container = document.querySelector(".container");
     const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
 
@@ -191,12 +192,24 @@ function createDisplayController() {
         game.playTurn(getRow(event), getColumn(event));
         clearScreen();
         updateScreen();
+
+        if (game.winner())
+            boardDisplay.dispatchEvent(new Event("winner"));
     }
 
     const getRow = event => event.target.dataset.row;
     const getColumn = event => event.target.dataset.column;
 
+    function winnerHandlerBoard() {
+        const winningPlayer = game.getCurrentPlayer();
+
+        const display = document.createElement("div");
+        display.textContent = `${winningPlayer.name} wins!`;
+        container.appendChild(display);
+    }
+
     boardDisplay.addEventListener("click", clickHandlerBoard);
+    boardDisplay.addEventListener("winner", winnerHandlerBoard)
     updateScreen();
 }
 
