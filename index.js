@@ -190,6 +190,7 @@ function createDisplayController() {
         updateBoard();
     }
 
+    const clearScreen = () => boardDisplay.replaceChildren();
     const updateTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
 
     function updateBoard() {
@@ -207,10 +208,20 @@ function createDisplayController() {
         cell.classList.add("cell");
         cell.dataset.row = row;
         cell.dataset.column = column;
-        cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
+        cell.textContent = space;
         boardDisplay.appendChild(cell);
     }
 
+    function clickHandlerBoard(event) {
+        game.playTurn(getRow(event), getColumn(event));
+        clearScreen();
+        updateScreen();
+    }
+
+    const getRow = event => event.target.dataset.row;
+    const getColumn = event => event.target.dataset.column;
+
+    boardDisplay.addEventListener("click", clickHandlerBoard);
     updateScreen();
 }
 
