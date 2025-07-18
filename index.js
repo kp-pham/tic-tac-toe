@@ -156,6 +156,7 @@ function createDisplayController() {
     const container = document.querySelector(".container");
     const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
+    const dialog = document.getElementById("names");
 
     function updateScreen() {
         updateTurn();
@@ -266,6 +267,10 @@ function createDisplayController() {
     boardDisplay.addEventListener("click", clickHandlerBoard);
     boardDisplay.addEventListener("winner", winnerHandlerBoard);
     boardDisplay.addEventListener("tie", tieHandlerBoard);
+
+    const displayDialog = () => dialog.showModal();
+
+    document.addEventListener("DOMContentLoaded", displayDialog);
 
     updateScreen();
 }
