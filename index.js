@@ -178,14 +178,21 @@ function createDisplayController() {
     function createCell(row, column, mark) {
         const cell = document.createElement("button");
         cell.classList.add("cell");
-        
+
         cell.dataset.row = row;
         cell.dataset.column = column;
         cell.textContent = mark;
 
-        colorMark(cell, mark);
+        if (cellMarked(mark)) {
+            colorMark(cell, mark);
+            fillCell(cell);
+        }
+
         return cell;
     }
+
+    const cellMarked = mark => mark === "X" || mark === "O";
+    const fillCell = cell => cell.disabled = true;
 
     function colorMark(cell, mark) {
         if (mark === "X")
@@ -194,6 +201,7 @@ function createDisplayController() {
         else if (mark === "O")
             cell.style.color = "blue";
     }
+
 
     function clickHandlerBoard(event) {
         game.playTurn(getRow(event), getColumn(event));
