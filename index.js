@@ -153,7 +153,12 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playTurn, winner, tied, getBoard, getCurrentPlayer };
+    function restart() {
+        currentPlayer = PLAYER_ONE;
+        board.clearBoard();
+    }
+
+    return { playTurn, winner, tied, getBoard, getCurrentPlayer, restart };
 }
 
 function createDisplayController() {
