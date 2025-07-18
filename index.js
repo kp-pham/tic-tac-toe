@@ -170,18 +170,29 @@ function createDisplayController() {
 
         for (let i = 0; i < board.length; ++i) {
             for (let j = 0; j < board.length; ++j) {
-                createCell(i, j, board[i][j]);
+                boardDisplay.appendChild(createCell(i, j, board[i][j]));
             }
         }
     }
 
-    function createCell(row, column, space) {
+    function createCell(row, column, mark) {
         const cell = document.createElement("button");
         cell.classList.add("cell");
+        
         cell.dataset.row = row;
         cell.dataset.column = column;
-        cell.textContent = space;
-        boardDisplay.appendChild(cell);
+        cell.textContent = mark;
+
+        colorMark(cell, mark);
+        return cell;
+    }
+
+    function colorMark(cell, mark) {
+        if (mark === "X")
+            cell.style.color = "red";
+
+        else if (mark === "O")
+            cell.style.color = "blue";
     }
 
     function clickHandlerBoard(event) {
