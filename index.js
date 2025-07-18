@@ -153,12 +153,11 @@ function createGameController() {
 function createDisplayController() {
     const game = createGameController();
 
-    const container = document.querySelector(".container");
     const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
     const menuDialog = document.getElementById("menu");
     const menuForm = document.querySelector("form");
-    const crossDialog = document.getElementById("player1-win");
+    const crossesDialog = document.getElementById("player1-win");
     const noughtsDialog = document.getElementById("player2-win");
     const tieDialog = document.getElementById("tie");
 
@@ -249,7 +248,7 @@ function createDisplayController() {
 
     function displayWinner() {
         const winningPlayer = game.getCurrentPlayer();
-        winningPlayer.mark === "X" ? crossDialog.showModal() : noughtsDialog.showModal();    
+        winningPlayer.mark === "X" ? crossesDialog.showModal() : noughtsDialog.showModal();    
     }
 
     function tieHandlerBoard() {
@@ -270,18 +269,28 @@ function createDisplayController() {
 
         setPlayer1Name(getPlayer1Name());
         setPlayer2Name(getPlayer2Name());
-        closeDialog();
+        closeDialog(menuDialog);
     }
 
     const getPlayer1Name = () => document.getElementById("player1-name").value;
     const getPlayer2Name = () => document.getElementById("player2-name").value;
-    const closeDialog = () => menuDialog.close();
+    const closeDialog = dialog => dialog.close();
 
     const setPlayer1Name = name => document.querySelector(".player1").lastElementChild.textContent = name;
     const setPlayer2Name = name => document.querySelector(".player2").lastElementChild.textContent = name;
 
     document.addEventListener("DOMContentLoaded", loadedHandlerDialog);
-    menuForm.addEventListener("submit", submitHandlerDialog); 
+    menuForm.addEventListener("submit", submitHandlerDialog);
+
+    function clickHandlerDialog() {
+        if (crossesDialog.open) closeDialog(crossesDialog);
+        if (noughtsDialog.open) closeDialog(noughtsDialog);
+        if (tieDialog.open) closeDialog(tieDialog);
+    }
+
+    document.querySelectorAll(".restart").forEach(restartButton => {
+        restartButton.addEventListener("click", clickHandlerDialog);
+    });
 
     updateScreen();
 }
