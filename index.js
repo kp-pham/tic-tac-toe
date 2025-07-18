@@ -17,9 +17,9 @@ function createGameboard() {
 
     function markSpace(row, column, mark) {
         if (!inBounds(row, column))
-            throw new Error ("Cannot place mark on space out of bounds.");
+            throw new Error(`Row ${row} and column ${column} are out of bounds.`);
         else if (!spaceEmpty(row, column))
-            throw new Error("Cannot place mark on space which is not empty.");
+            throw new Error(`The square at row ${row} and column ${column} has already been marked.`);
         else  
             placeMark(row, column, mark);
     }
@@ -43,13 +43,9 @@ function createGameController() {
     const board = createGameboard();
 
     let currentPlayer = PLAYER_ONE;
-    let running = true;
 
     const getBoard = () => board.getBoard();
     const getCurrentPlayer = () => currentPlayer;
-
-    const gameInProgress = () => running;
-    const endGame = () => running = false;
 
     function createPlayer(name, mark) {
         return { name, mark };
@@ -60,8 +56,13 @@ function createGameController() {
     }
 
     function playTurn(row, column) { 
-        board.markSpace(row, column, currentPlayer.mark);
-        nextPlayerTurn();          
+        try {
+            board.markSpace(row, column, currentPlayer.mark);
+            nextPlayerTurn();          
+        }
+        catch(error) {
+            console.error(error.message);
+        }
     }
 
     function endTurn() {
