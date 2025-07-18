@@ -225,17 +225,21 @@ function createDisplayController() {
 
     function winnerHandlerBoard() {
         freezeBoard();
+        displayWinner();
+    }
+
+    function freezeBoard() {
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach(cell => cell.disabled = true);
+    }
+
+    function displayWinner() {
         const winningPlayer = game.getCurrentPlayer();
 
         const display = document.createElement("div");
         display.classList.add("display");
         display.textContent = `${winningPlayer.name} wins!`;
         container.appendChild(display);
-    }
-
-    function freezeBoard() {
-        const cells = document.querySelectorAll(".cell");
-        cells.forEach(cell => cell.disabled = true);
     }
 
     function tieHandlerBoard() {
