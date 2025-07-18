@@ -4,6 +4,7 @@ body {
     grid-template-rows: 1fr 2fr 1fr;
     padding: 0;
     margin: 0;
+    min-height: 100vh;
 }
 
 .header {
@@ -84,4 +85,64 @@ body {
 
 .footer {
     background-color: #1F1F1F;
+}
+
+dialog {
+    background-color: #1F1F1F;
+    color: white;
+    padding: 20px;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.branding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 3rem;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo .mark {
+    font-size: 4rem;
+}
+
+.logo .mark:nth-child(1) {
+    color: grey;
+}
+
+form {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    justify-self: center;
+}
+
+form section {
+    padding: 5px;
+}
+
+form input {
+    background-color: #1F1F1F;
+    color: white;
+    padding: 2px 5px;
+    border: 2px solid #8C8A84;
+    border-radius: 10px;
+}
+
+
+form button {
+    justify-self: center;
+    align-self: center;
+    background-color: #1F1F1F;
+    color: white;
+    padding: 5px 10px;
+    border: 2px solid #8C8A84;
+    border-radius: 10px;
 }
