@@ -26,7 +26,7 @@ function createGameboard() {
 
     function clearBoard() {
         for (let i = 0; i < ROWS; ++i)
-            for (let j = 0; j < COLUMNS; ++i)
+            for (let j = 0; j < COLUMNS; ++j)
                 board[i][j] = EMPTY;
     }
 
@@ -297,6 +297,11 @@ function createDisplayController() {
         if (crossesDialog.open) closeDialog(crossesDialog);
         if (noughtsDialog.open) closeDialog(noughtsDialog);
         if (tieDialog.open) closeDialog(tieDialog);
+        game.restart();
+
+        enableClickHandler();
+        clearScreen();
+        updateScreen();
     }
 
     document.querySelectorAll(".restart").forEach(restartButton => {
