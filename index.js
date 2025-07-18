@@ -207,20 +207,21 @@ function createDisplayController() {
     function updateBoard() {
         const board = game.getBoard();
 
-        for (let row of board) {
-            for (let space of row) {
-                createCell(space);
+        for (let i = 0; i < board.length; ++i) {
+            for (let j = 0; j < board.length; ++j) {
+                createCell(i, j, board[i][j]);
             }
-        } 
+        }
     }
 
-    function createCell(space) {
+    function createCell(row, column, space) {
         const cell = document.createElement("button");
         cell.classList.add("cell");
+        cell.dataset.row = row;
+        cell.dataset.column = column;
         cell.textContent = Math.random() < 0.5 ? 'X' : 'O';
         boardDisplay.appendChild(cell);
     }
-
 
     updateScreen();
 }

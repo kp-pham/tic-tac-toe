@@ -9,5 +9,8 @@
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+}
+
+.cell {
+    font-size: 2rem;
 }
