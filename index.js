@@ -59,41 +59,13 @@ function createGameController() {
         currentPlayer = (currentPlayer === PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
     }
 
-    function playGame() {
-        while (gameInProgress()) {
-            startTurn();
-            playTurn();
-            endTurn();
-        }
-
-        announceResults();
-    }
-
-    function startTurn() {
-        console.log(JSON.stringify(board.getBoard()));
-        console.log(`${currentPlayer.name}'s turn!`);
-    }
-
     function playTurn(row, column) { 
-        board.markSpace(row, column, currentPlayer.mark);          
+        board.markSpace(row, column, currentPlayer.mark);
+        nextPlayerTurn();          
     }
 
     function endTurn() {
         win() || tie() ? endGame() : nextPlayerTurn();
-    }
-
-    function announceResults() {
-        win() ? announceWinner() : announceTie();
-    }
-
-    function announceWinner() {
-        console.log(board.getBoard());
-        console.log(`${currentPlayer.name} wins!`);
-    }
-
-    function announceTie() {
-        console.log(board.getBoard());
-        console.log("Tie!");
     }
 
     function tie() {
