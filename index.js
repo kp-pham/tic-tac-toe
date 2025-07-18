@@ -204,10 +204,10 @@ function createDisplayController() {
 
     function colorMark(cell, mark) {
         if (mark === "X")
-            cell.style.color = "red";
+            cell.style.color = "grey";
 
         else if (mark === "O")
-            cell.style.color = "blue";
+            cell.style.color = "white";
     }
 
     function clickHandlerBoard(event) {
