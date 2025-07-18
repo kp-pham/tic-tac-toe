@@ -49,6 +49,10 @@ body {
     background-color: #1F1F1F;
 }
 
+.player1 .mark {
+    color: grey;
+}
+
 .mark {
     font-size: 3rem;
     color: white;
@@ -93,6 +97,8 @@ dialog {
     padding: 20px;
     border: 5px solid white;
     border-radius: 10px;
+    width: 30%;
+    height: 40%;
 }
 
 .branding {
@@ -136,8 +142,7 @@ form input {
     border-radius: 10px;
 }
 
-
-form button {
+dialog button {
     justify-self: center;
     align-self: center;
     background-color: #1F1F1F;
@@ -145,4 +150,25 @@ form button {
     padding: 5px 10px;
     border: 2px solid #8C8A84;
     border-radius: 10px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#player1-win .mark {
+    color: grey;
+}
+
+.result .mark {
+    font-size: 4rem;
 }

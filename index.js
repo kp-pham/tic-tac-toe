@@ -158,6 +158,9 @@ function createDisplayController() {
     const boardDisplay = document.querySelector(".board");
     const menuDialog = document.getElementById("menu");
     const menuForm = document.querySelector("form");
+    const crossDialog = document.getElementById("player1-win");
+    const noughtsDialog = document.getElementById("player2-win");
+    const tieDialog = document.getElementById("tie");
 
     function updateScreen() {
         updateTurn();
@@ -246,11 +249,7 @@ function createDisplayController() {
 
     function displayWinner() {
         const winningPlayer = game.getCurrentPlayer();
-
-        const display = document.createElement("div");
-        display.classList.add("display");
-        display.textContent = `${winningPlayer.name} wins!`;
-        container.appendChild(display);
+        winningPlayer.mark === "X" ? crossDialog.showModal() : noughtsDialog.showModal();    
     }
 
     function tieHandlerBoard() {
@@ -258,12 +257,7 @@ function createDisplayController() {
         displayTie();
     }
 
-    function displayTie() {
-        const display = document.createElement("div");
-        display.classList.add("display");
-        display.textContent = `Tie!`;
-        container.appendChild(display);
-    }
+    const displayTie = () => tieDialog.showModal();
 
     boardDisplay.addEventListener("click", clickHandlerBoard);
     boardDisplay.addEventListener("winner", winnerHandlerBoard);
