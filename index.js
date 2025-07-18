@@ -67,10 +67,6 @@ function createGameController() {
         }
     }
 
-    function endTurn() {
-        win() || tie() ? endGame() : nextPlayerTurn();
-    }
-
     function tie() {
         return !win() && boardFilled();
     }
@@ -195,6 +191,9 @@ function createDisplayController() {
 
         if (game.winner())
             boardDisplay.dispatchEvent(new Event("winner"));
+
+        else if (game.tied())
+            boardDisplay.dispatchEvent(new Event("tie"));
     }
 
     const getRow = event => event.target.dataset.row;
@@ -204,12 +203,22 @@ function createDisplayController() {
         const winningPlayer = game.getCurrentPlayer();
 
         const display = document.createElement("div");
+        display.classList.add("display");
         display.textContent = `${winningPlayer.name} wins!`;
         container.appendChild(display);
     }
 
+    function tieHandlerBoard() {
+        const display = document.createElement("div");
+        display.classList.add("display");
+        display.textContent = `Tie!`;
+        container.appendChild(display);
+    }
+
     boardDisplay.addEventListener("click", clickHandlerBoard);
-    boardDisplay.addEventListener("winner", winnerHandlerBoard)
+    boardDisplay.addEventListener("winner", winnerHandlerBoard);
+    boardDisplay.addEventListener("tie", tieHandlerBoard);
+
     updateScreen();
 }
 
