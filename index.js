@@ -224,12 +224,18 @@ function createDisplayController() {
     const getColumn = event => event.target.dataset.column;
 
     function winnerHandlerBoard() {
+        freezeBoard();
         const winningPlayer = game.getCurrentPlayer();
 
         const display = document.createElement("div");
         display.classList.add("display");
         display.textContent = `${winningPlayer.name} wins!`;
         container.appendChild(display);
+    }
+
+    function freezeBoard() {
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach(cell => cell.disabled = true);
     }
 
     function tieHandlerBoard() {
