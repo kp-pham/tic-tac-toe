@@ -224,8 +224,17 @@ function createDisplayController() {
     const getColumn = event => event.target.dataset.column;
 
     function winnerHandlerBoard() {
+        disableClickHandler();
         freezeBoard();
         displayWinner();
+    }
+
+    function enableClickHandler() {
+        boardDisplay.addEventListener("click", clickHandlerBoard);
+    }
+
+    function disableClickHandler() {
+        boardDisplay.removeEventListener("click", clickHandlerBoard);
     }
 
     function freezeBoard() {
@@ -243,6 +252,11 @@ function createDisplayController() {
     }
 
     function tieHandlerBoard() {
+        disableClickHandler();
+        displayTie();
+    }
+
+    function displayTie() {
         const display = document.createElement("div");
         display.classList.add("display");
         display.textContent = `Tie!`;
