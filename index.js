@@ -24,13 +24,19 @@ function createGameboard() {
             placeMark(row, column, mark);
     }
 
+    function clearBoard() {
+        for (let i = 0; i < ROWS; ++i)
+            for (let j = 0; j < COLUMNS; ++i)
+                board[i][j] = EMPTY;
+    }
+
     const inBounds = (row, column) => rowInBounds(row) && columnInBounds(column);
     const rowInBounds = row => row >= 0 && row <= ROWS - 1;
     const columnInBounds = column => column >= 0 && column <= COLUMNS - 1;
     const spaceEmpty = (row, column) => board[row][column] === EMPTY;
     const placeMark = (row, column, mark) => board[row][column] = mark;
 
-    return { getBoard, markSpace };
+    return { getBoard, markSpace, clearBoard };
 }
 
 function createGameController() {
