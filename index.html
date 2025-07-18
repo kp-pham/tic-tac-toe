@@ -9,10 +9,20 @@
 </head>
     <body>
         <div class="container">
+            <div class="players">
+                <div class="player1">
+                    <div class="mark">X</div>
+                    <div class="name"></div>
+                </div>
+                <div class="player2">
+                    <div class="mark">O</div>
+                    <div class="name"></div>
+                </div>
+            </div>
             <div class="turn"></div>
             <div class="board"></div>
         </div>
-        <dialog id="names">
+        <dialog>
             <form method="dialog">
                 <div class="fields">
                     <section>
@@ -24,7 +34,7 @@
                         <input type="text" id="player2-name">
                     </section>
                 </div>
-                <button type="submit">Play</button>
+                <button type="submit" id="submit-dialog">Play</button>
             </form>
         </dialog>
     </body>
