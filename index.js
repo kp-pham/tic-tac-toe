@@ -156,8 +156,8 @@ function createDisplayController() {
     const container = document.querySelector(".container");
     const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
-    const dialog = document.querySelector("dialog");
-    const dialogForm = document.querySelector("form");
+    const menuDialog = document.getElementById("menu");
+    const menuForm = document.querySelector("form");
 
     function updateScreen() {
         updateTurn();
@@ -269,7 +269,7 @@ function createDisplayController() {
     boardDisplay.addEventListener("winner", winnerHandlerBoard);
     boardDisplay.addEventListener("tie", tieHandlerBoard);
 
-    const loadedHandlerDialog = () => dialog.showModal();
+    const loadedHandlerDialog = () => menuDialog.showModal();
 
     function submitHandlerDialog(event) {
         event.preventDefault();
@@ -281,13 +281,13 @@ function createDisplayController() {
 
     const getPlayer1Name = () => document.getElementById("player1-name").value;
     const getPlayer2Name = () => document.getElementById("player2-name").value;
-    const closeDialog = () => dialog.close();
+    const closeDialog = () => menuDialog.close();
 
     const setPlayer1Name = name => document.querySelector(".player1").lastElementChild.textContent = name;
     const setPlayer2Name = name => document.querySelector(".player2").lastElementChild.textContent = name;
 
     document.addEventListener("DOMContentLoaded", loadedHandlerDialog);
-    dialogForm.addEventListener("submit", submitHandlerDialog); 
+    menuForm.addEventListener("submit", submitHandlerDialog); 
 
     updateScreen();
 }
