@@ -74,20 +74,8 @@ function createGameController() {
         console.log(`${currentPlayer.name}'s turn!`);
     }
 
-    function playTurn() { 
-        do {
-            const row = parseInt(prompt("Row: "));
-            const column = parseInt(prompt("Column: "));
-
-            try {
-                board.markSpace(row, column, currentPlayer.mark);
-                break;
-            }
-            catch (error) {
-                console.error(error.message);
-            }
-
-        } while(true);
+    function playTurn(row, column) { 
+        board.markSpace(row, column, currentPlayer.mark);          
     }
 
     function endTurn() {
@@ -188,7 +176,7 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playGame, getBoard, getCurrentPlayer };
+    return { playTurn, getBoard, getCurrentPlayer };
 }
 
 function createDisplayController() {
