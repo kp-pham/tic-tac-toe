@@ -46,6 +46,8 @@ function createGameController() {
 
     const getBoard = () => board.getBoard();
     const getCurrentPlayer = () => currentPlayer;
+    const winner = () => win();
+    const tied = () => tie();
 
     function createPlayer(name, mark) {
         return { name, mark };
@@ -149,7 +151,7 @@ function createGameController() {
 
     const threeInADiagonal = (diagonal, mark) => diagonal.every(space => space === mark);
 
-    return { playTurn, getBoard, getCurrentPlayer };
+    return { playTurn, winner, tied, getBoard, getCurrentPlayer };
 }
 
 function createDisplayController() {
