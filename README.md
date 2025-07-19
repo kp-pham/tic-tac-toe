@@ -34,7 +34,11 @@ When the current turn is the first player's turn, the square is colored grey as 
 
 ![Screenshot of the three-by-three grid with the square in the middle of the grid marked with a grey cross and the square in the bottom righthand corner of the grid colored white.](images/white-focused.png)
 
-When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused. Pressing ```SHIFT + TAB``` would focus the square to the right. Pressing ```ENTER``` would mark the focused square with a crosss.
+When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused. Pressing ```SHIFT + TAB``` would focus the square to the left. Pressing ```ENTER``` would mark the focused square with a nought.
+
+![Screenshot of the three-by-three grid with the square in the middle of the grid marked with a grey cross and the square to the left of the square in the middle colored grey.](images/next-focused-square.png)
+
+Squares which have already been marked cannot be marked. Pressing ```TAB``` would focus the next nearest square which has not been marked which is the square to the right of the square in the middle of the grid.
 
 ### How to Win
 
@@ -43,17 +47,17 @@ The objective of the game is to be the player with three marks in a row, column,
 #### Three in a Row
 ![Screenshot of the three-by-three grid with the square in the middle of the third column greyed out with the first player about to win with three marks in a row.](images/three-in-row.png)
 
-The win condition for three in a row occurs when three consecutive squares in a row of the grid are marked. The first player is about to win in this scenario above because marking the focused square would mark all the squares in the second row.
+The win condition for three in a row occurs when three consecutive squares in a row of the grid are marked. The first player is about to win in this scenario above because marking the focused square would mark all the squares in the second row of the grid.
 
 #### Three in a Column
 ![Screenshot of the three-by-three grid with the top lefthand corner of the grid colored white with the second player about to win with three marks in a column.](images/three-in-column.png)
 
-The win condition for three in a column occurs when three consecutive squares in a column of the grid are marked. The second player is about to win this scenario above because marking the focused square would mark all the squares in the first column.
+The win condition for three in a column occurs when three consecutive squares in a column of the grid are marked. The second player is about to win this scenario above because marking the focused square would mark all the squares in the first column of the grid.
 
 #### Three in a Diagonal
 ![Screenshot of the three-by-three grid with the square in the top righthand corner of the grid colored grey with the first player about to win with three marks in a diagonal.](images/three-in-diagonal.png)
 
-The win condition for three in a diagonal occurs when three consecutive squares in the main diagonal or anti-diagonal are marked. The main diagonal stretches from the square in the top lefthand corner to the square in the bottom righthand corner and the anti-diagonal stretches from the square in the bottom lefthand corner to the square in the top righthand corner. The first player is abut to win this scenario above because marking the focused square would mark all the squares in the main diagonal.
+The win condition for three in a diagonal occurs when three consecutive squares in the main diagonal or anti-diagonal are marked. The main diagonal stretches from the square in the top lefthand corner to the square in the bottom righthand corner and the anti-diagonal stretches from the square in the bottom lefthand corner to the square in the top righthand corner. The first player is about to win this scenario above because marking the focused square would mark all the squares in the main diagonal.
 
 #### Forced Draw
 ![Screenshot of the three-by-three grid with the square in the middle of the third row colored grey and the rest of the squares marked. The outcome of the game is a forced draw because there are no more squares to mark and the square to be marked does not result in three consecutive marked squares.](images/tie.png)
