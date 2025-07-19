@@ -49,6 +49,12 @@ body {
     background-color: #1F1F1F;
 }
 
+.name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .player1 .mark {
     color: grey;
 }

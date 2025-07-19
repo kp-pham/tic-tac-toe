@@ -43,8 +43,8 @@ function createGameController() {
     const PLAYER_ONE_MARK = 'X';
     const PLAYER_TWO_MARK = 'O';
 
-    const PLAYER_ONE = createPlayer("Player 1", PLAYER_ONE_MARK);
-    const PLAYER_TWO = createPlayer("Player 2", PLAYER_TWO_MARK);
+    const PLAYER_ONE = createPlayer(PLAYER_ONE_MARK);
+    const PLAYER_TWO = createPlayer(PLAYER_TWO_MARK);
 
     const board = createGameboard();
 
@@ -55,8 +55,8 @@ function createGameController() {
     const winner = () => win();
     const tied = () => tie();
 
-    function createPlayer(name, mark) {
-        return { name, mark };
+    function createPlayer(mark) {
+        return { mark };
     }
 
     function nextPlayerTurn() {
@@ -181,7 +181,16 @@ function createDisplayController() {
     }
 
     const clearScreen = () => boardDisplay.replaceChildren();
-    const updateTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
+
+    function updateTurn() {
+        const currentPlayer = game.getCurrentPlayer();
+
+        if (currentPlayer.mark === "X")
+            turnDisplay.textContent = `${player1Display.lastElementChild.textContent}'s turn`;
+
+        else
+            turnDisplay.textContent = `${player2Display.lastElementChild.textContent}'s turn`;
+    }
 
     function updateCurrentPlayer() {
         const currentPlayer = game.getCurrentPlayer();
@@ -297,6 +306,7 @@ function createDisplayController() {
         setPlayer1Name(getPlayer1Name());
         setPlayer2Name(getPlayer2Name());
         closeDialog(menuDialog);
+        updateScreen();
     }
 
     const getPlayer1Name = () => document.getElementById("player1-name").value;
@@ -323,8 +333,6 @@ function createDisplayController() {
     document.querySelectorAll(".restart").forEach(restartButton => {
         restartButton.addEventListener("click", clickHandlerDialog);
     });
-
-    updateScreen();
 }
 
 createDisplayController()
