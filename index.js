@@ -266,7 +266,12 @@ function createDisplayController() {
     function winnerHandlerBoard() {
         disableClickHandler();
         freezeBoard();
+        displayGameOver();
         displayWinner();
+    }
+
+    function displayGameOver() {
+        turnDisplay.textContent = "Game Over!";
     }
 
     function enableClickHandler() {
@@ -289,6 +294,7 @@ function createDisplayController() {
 
     function tieHandlerBoard() {
         disableClickHandler();
+        displayGameOver();
         displayTie();
     }
 
