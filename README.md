@@ -53,7 +53,7 @@ The win condition for three in a column occurs when three consecutive squares in
 #### Three in a Diagonal
 ![Screenshot of the three-by-three grid with the square in the top righthand corner of the grid colored grey with the first player about to win with three marks in a diagonal.](images/three-in-diagonal.png)
 
-The win condition for three in a diagonal occurs when three consecutive squares in the main diagonal or anti-diagonal are marked. The main diagonal stretches from the square in the top lefthand corner to the square in the bottom righthand corner. The anti-diagonal stretches from the square in the bottom lefthand corner to the square in the top righthand corner. The first player is abut to win this scenario above because marking the focused square would mark all the squares in the main diagonal
+The win condition for three in a diagonal occurs when three consecutive squares in the main diagonal or anti-diagonal are marked. The main diagonal stretches from the square in the top lefthand corner to the square in the bottom righthand corner and the anti-diagonal stretches from the square in the bottom lefthand corner to the square in the top righthand corner. The first player is abut to win this scenario above because marking the focused square would mark all the squares in the main diagonal.
 
 #### Forced Draw
 ![Screenshot of the three-by-three grid with the square in the middle of the third row colored grey and the rest of the squares marked. The outcome of the game is a forced draw because there are no more squares to mark and the square to be marked does not result in three consecutive marked squares.](images/tie.png)
