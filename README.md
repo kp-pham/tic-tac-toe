@@ -34,7 +34,7 @@ When the current turn is the first player's turn, the square is colored grey as 
 
 ![Screenshot of the three-by-three grid with the square in the middle of the grid marked with a grey cross and the square in the bottom righthand corner of the grid colored white.](images/white-focused.png)
 
-When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused. Pressing ```SHIFT + TAB``` would focus the square to the left. Pressing ```ENTER``` would mark the focused square with a nought.
+When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused. Pressing ```SHIFT + TAB``` would focus the square to the left when the focused square is at the edge of the grid. Pressing ```ENTER``` would mark the focused square with a nought.
 
 ![Screenshot of the three-by-three grid with the square in the middle of the grid marked with a grey cross and the square to the left of the square in the middle colored grey.](images/next-focused-square.png)
 
