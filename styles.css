@@ -86,6 +86,16 @@ body {
     border-right: 10px solid #0BA596;
 }
 
+.cell:focus-visible[data-current-player="player1"] {
+    outline: none;
+    background-color: grey;
+}
+
+.cell:focus-visible[data-current-player="player2"] {
+    outline: none;
+    background-color: white;
+}
+
 .display {
     position: absolute;
     top: 50%;

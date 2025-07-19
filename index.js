@@ -218,14 +218,18 @@ function createDisplayController() {
     function createCell(row, column, mark) {
         const cell = document.createElement("button");
         cell.classList.add("cell");
-
-        cell.dataset.row = row;
-        cell.dataset.column = column;
         cell.textContent = mark;
 
+        assignDataAttributes(cell, row, column);
         fillCell(cell, mark);
-
         return cell;
+    }
+
+    function assignDataAttributes(cell, row, column){
+        const currentPlayer = game.getCurrentPlayer();
+        cell.dataset.row = row;
+        cell.dataset.column = column;
+        cell.dataset.currentPlayer = currentPlayer.mark === "X" ? "player1" : "player2";
     }
 
     function fillCell(cell, mark) {
