@@ -166,6 +166,8 @@ function createDisplayController() {
 
     const turnDisplay = document.querySelector(".turn");
     const boardDisplay = document.querySelector(".board");
+    const player1Display = document.querySelector(".player1");
+    const player2Display = document.querySelector(".player2");
     const menuDialog = document.getElementById("menu");
     const menuForm = document.querySelector("form");
     const crossesDialog = document.getElementById("player1-win");
@@ -174,11 +176,25 @@ function createDisplayController() {
 
     function updateScreen() {
         updateTurn();
+        updateCurrentPlayer();
         updateBoard();
     }
 
     const clearScreen = () => boardDisplay.replaceChildren();
     const updateTurn = () => turnDisplay.textContent = `${game.getCurrentPlayer().name}'s turn`;
+
+    function updateCurrentPlayer() {
+        const currentPlayer = game.getCurrentPlayer();
+
+        if (currentPlayer.mark === "X") {
+            player1Display.style.borderColor = "#15BDAC";
+            player2Display.style.borderColor = "white";
+        }
+        else {
+            player1Display.style.borderColor = "white";
+            player2Display.style.borderColor = "#15BDAC";
+        }
+    }
 
     function updateBoard() {
         const board = game.getBoard();
