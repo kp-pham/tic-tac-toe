@@ -1,6 +1,6 @@
-![Screenshot of the main menu with the name of the game, input fields for the players to provide their names, and the button to press to start the game.](images/main-menu.png)
-
 # tic-tac-toe
+
+![Screenshot of the main menu with the name of the game, input fields for the players to provide their names, and the button to press to start the game.](images/main-menu.png)
 
 This project simulates the paper-and-pencil game Tic-tac-toe between two players. The players take turns marking the spaces on the three-by-three grid with one of the players marking the spaces with squares and the other player marking the spaces with noughts. The player who marks three spaces in a row, column, or diagonal wins the game.
 
@@ -18,7 +18,7 @@ The top of the screen shows the names of the players and the current turn. The n
 
 Mouse and trackpad users left-click on a square on the grid to mark the square. Squares which have already been marked cannot be marked.
 
-Screen-readers users such as those with visual impairments, cognitive impairments, and motor disabilities have the option to play the game with keyboard. The following table contains the keyboard controls and controls for screen-reader users to move through and focus the squares of the grid and mark the focused square.
+Screen-readers users such as those with visual impairments, cognitive impairments, and motor disabilities have the option to play the game with keyboard. The following table contains the keyboard shortcuts and controls for screen-reader users to move through and focus the squares of the grid and mark the focused square.
 
 | Keyboard Shortcuts | Action |
 | -------------- | ------ |
@@ -26,16 +26,15 @@ Screen-readers users such as those with visual impairments, cognitive impairment
 | ```SHIFT + TAB``` | Focus previous square on the grid
 | ```ENTER``` | Mark focused square
 
-The following images demonstrate the visual indication for screen-reader users to determine whether a square is focused.
+The following images demonstrate the visual indication for screen-reader users to determine whether a square is focused. Please refer to the table above for information about keyboard shortcuts and controls mentioned below.
 
 ![Screenshot of the three-by-three grid with the square in the middle of the grid colored grey.](images/grey-focused.png)
 
-When the current turn is the first player's turn, the square is colored grey as a visual indication that the square is focused.
-
+When the current turn is the first player's turn, the square is colored grey as a visual indication that the square is focused. Pressing ```TAB``` would focus the square to the right and pressing ```SHIFT + TAB``` would focus the square to the left. Pressing ```ENTER``` would mark the focused square with a cross.
 
 ![Screenshot of the three-by-three grid with the square in the middle of the grid marked with a grey cross and the square in the bottom righthand corner of the grid colored white.](images/white-focused.png)
 
-When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused.
+When the second player's turn is the current turn, the square is colored white as a visual indication that the square is focused. Pressing ```SHIFT + TAB``` would focus the square to the right. Pressing ```ENTER``` would mark the focused square with a crosss.
 
 ### How to Win
 
@@ -44,19 +43,19 @@ The objective of the game is to be the player with three marks in a row, column,
 #### Three in a Row
 ![Screenshot of the three-by-three grid with the square in the middle of the third column greyed out with the first player about to win with three marks in a row.](images/three-in-row.png)
 
-The first player is about to win in this scenario because marking the square which is focused would result in three crosses in a row.
+The win condition for three in a row occurs when three consecutive squares in a row of the grid are marked. The first player is about to win in this scenario above because marking the focused square would mark all the squares in the second row.
 
 #### Three in a Column
 ![Screenshot of the three-by-three grid with the top lefthand corner of the grid colored white with the second player about to win with three marks in a column.](images/three-in-column.png)
 
-The second player is about to win in this scenario because marking the square which is focused would result in three noughts in a column.
+The win condition for three in a column occurs when three consecutive squares in a column of the grid are marked. The second player is about to win this scenario above because marking the focused square would mark all the squares in the first column.
 
 #### Three in a Diagonal
 ![Screenshot of the three-by-three grid with the square in the top righthand corner of the grid colored grey with the first player about to win with three marks in a diagonal.](images/three-in-diagonal.png)
 
-The first player is about to win in this scenario because marking the square which is focused would result in three crosses in a diagonal.
+The win condition for three in a diagonal occurs when three consecutive squares in the main diagonal or anti-diagonal are marked. The main diagonal stretches from the square in the top lefthand corner to the square in the bottom righthand corner. The anti-diagonal stretches from the square in the bottom lefthand corner to the square in the top righthand corner. The first player is abut to win this scenario above because marking the focused square would mark all the squares in the main diagonal
 
 #### Forced Draw
 ![Screenshot of the three-by-three grid with the square in the middle of the third row colored grey and the rest of the squares marked. The outcome of the game is a forced draw because there are no more squares to mark and the square to be marked does not result in three consecutive marked squares.](images/tie.png)
 
-The outcome of this scenario is a forced draw because there are no more squares to be marked but the square to be marked does not result in three consecutive marked squares.
+The forced draw occurs when there are no other squares to be marked but the only square to be marked does not result in three consecutive squares in a row, column, or diagonal to be marked. The scenario above is a forced draw because the last to be marked does not result in three consecutive marked squares for the first player and there are no more squares for the second player to mark after the last square is marked.
