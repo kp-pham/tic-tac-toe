@@ -19,7 +19,7 @@ cd tic-tac-toe
 ```
 
 Open the ```index.html``` file in your browser:
-- On Windows: Double click index.html
+- On Windows: Double click ```index.html```
 - On MacOS/Linux: Right click ```index.html``` and choose "Open With" > Your Browser
 
 ## How to Play
