@@ -6,6 +6,22 @@ This project simulates the paper-and-pencil game Tic-tac-toe between two players
 
 This project takes inspiration from [Google's version of Tic-tac-toe](https://www.google.com/search?q=tic+tac+toe&oq=Tic+Tac+Toe&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRhAMgwIAhAAGEMYgAQYigUyDwgDEAAYQxixAxiABBiKBTIMCAQQABhDGIAEGIoFMgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINDQ1MmowajSoAgCwAgE&sourceid=chrome&ie=UTF-8) on Google Chrome.
 
+## Installation
+
+Clone the repository:
+```bash
+git clone https://github.com/your-username/tic-tac-toe.git
+```
+
+Change into project directory:
+```bash
+cd tic-tac-toe
+```
+
+Open the ```index.html``` file in your browser:
+- On Windows: Double click index.html
+- On MacOS/Linux: Right click ```index.html``` and choose "Open With" > Your Browser
+
 ## How to Play
 
 ### Heads-Up Display
